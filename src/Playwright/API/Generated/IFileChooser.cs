@@ -35,10 +35,12 @@ namespace Microsoft.Playwright;
 /// event.
 /// </para>
 /// <code>
-/// var fileChooser = await page.RunAndWaitForFileChooserAsync(async () =&gt;<br/>
+/// // Start waiting for file chooser before clicking. Note no await.
+/// var fileChooserPromise = page.RunAndWaitForFileChooserAsync(async () =&gt;<br/>
 /// {<br/>
 ///     await page.GetByText("Upload file").ClickAsync();<br/>
 /// });<br/>
+/// var fileChoose : await fileChooserPromise;<br/>
 /// await fileChooser.SetFilesAsync("temp.txt");
 /// </code>
 /// </summary>
